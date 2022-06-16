@@ -1,4 +1,5 @@
-﻿using Route256.RateLimiter.Options;
+﻿using Route256.RateLimiter.Demo.Storage;
+using Route256.RateLimiter.Options;
 
 namespace Route256.RateLimiter.Demo;
 
@@ -15,7 +16,8 @@ public class Startup
     {
         services.Configure<RateLimitOptions>(_configuration.GetSection(RateLimitOptions.Name));
         services.Configure<RateLimitPolicies>(_configuration.GetSection(RateLimitPolicies.Name));
-        
+
+        services.AddSingleton<IProductCatalogStorage, ProductCatalogStorage>();
         services.AddInMemoryRateLimiting();
         services.AddControllers();
     }
@@ -27,8 +29,8 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseIpRateLimiting();
         app.UseRouting();
+        app.UseIpRateLimiting();
 
         app.UseEndpoints(endpoints =>
         {

@@ -21,5 +21,5 @@ public class RateLimitRule : Attribute
     /// <summary>
     /// Maximum number of requests that a client can make in a defined period
     /// </summary>
-    public double Limit { get; set; }
+    public int Limit { get; set; }
 }

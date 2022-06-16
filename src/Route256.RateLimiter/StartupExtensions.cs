@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Route256.RateLimiter.Core;
 using Route256.RateLimiter.Middleware;
+using Route256.RateLimiter.Services;
 using Route256.RateLimiter.Storage;
 using Route256.RateLimiter.Storage.MemoryCache;
 
@@ -11,7 +11,6 @@ public static class StartupExtensions
 {
     public static IServiceCollection AddInMemoryRateLimiting(this IServiceCollection services)
     {
-        services.AddSingleton<IRateLimitStorage, MemoryCacheRateLimitStorage>();
         services.AddSingleton<IClientStatisticsStorage, MemoryCacheClientStatisticsStorage>();
         services.AddSingleton<IRateLimitProcessor, RateLimitProcessor>();
         return services;

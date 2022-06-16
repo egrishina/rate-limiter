@@ -1,7 +1,7 @@
 ﻿using Route256.RateLimiter.Models;
 using Route256.RateLimiter.Options;
 
-namespace Route256.RateLimiter.Core;
+namespace Route256.RateLimiter.Services;
 
 public interface IRateLimitProcessor
 {
@@ -12,5 +12,5 @@ public interface IRateLimitProcessor
         CancellationToken cancellationToken = default);
 
     Task UpdateClientStatisticsAsync(ClientRequestIdentity requestIdentity, ClientStatistics clientStatistics,
-        CancellationToken cancellationToken = default);
+        RateLimitRule rule, CancellationToken cancellationToken = default);
 }

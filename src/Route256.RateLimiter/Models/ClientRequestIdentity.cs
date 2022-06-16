@@ -2,7 +2,6 @@
 
 public class ClientRequestIdentity
 {
-    public string ClientIp { get; set; }
-    public string Path { get; set; }
-    public string HttpVerb { get; set; }
+    public string ClientIp { get; init; }
+    public string Path { get; init; }
 }
